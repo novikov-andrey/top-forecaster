@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forecaster_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+
+championat-client:
+  url: https://www.championat.com
+  rplCalendarLink: /football/_russiapl/tournament/2599/calendar
+  timeout: 60000
+
+rpl:
+  currentSeason: 2018
