@@ -1,7 +1,7 @@
 package com.football.topforecaster.service
 
 import com.football.topforecaster.service.impl.ChampionatCalendarParsingServiceImpl
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element

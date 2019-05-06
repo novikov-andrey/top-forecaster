@@ -45,7 +45,7 @@ class MatchCalendarServiceImplTest {
         val currentSeason = 2018
 
         `when`(championatClient.getMatchCalendar()).thenReturn(matchDoc)
-        `when`(parsingService.extractMatches(matchDoc)).thenReturn(arrayListOf(element))
+        `when`(parsingService.extractMatches(matchDoc)).thenReturn(listOf(element))
         `when`(parsingService.extractHostTeam(element)).thenReturn(hostTeam)
         `when`(parsingService.extractGuestTeam(element)).thenReturn(guestTeam)
         `when`(parsingService.extractDate(element)).thenReturn(date)
