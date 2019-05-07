@@ -1,13 +1,12 @@
 package com.football.topforecaster.service
 
 import com.football.topforecaster.service.impl.ChampionatCalendarParsingServiceImpl
-import org.junit.Assert.assertEquals
-import org.jsoup.Jsoup
+import com.football.topforecaster.util.FileUtils
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import java.io.File
 import java.time.LocalDate
 import java.time.LocalTime
 
@@ -28,9 +27,9 @@ class ChampionatCalendarParsingServiceImplTest {
 
     @Before
     fun init() {
-        calendarDoc = loadDocument(CALENDAR_FILE_NAME)
-        matchElement = loadDocument(MATCH_FILE_NAME)
-        matchElementWithNoScoreAndStartTime = loadDocument(MATCH_WITH_NO_INFO_FILE_NAME)
+        calendarDoc = FileUtils.loadDocument(CALENDAR_FILE_NAME)
+        matchElement = FileUtils.loadDocument(MATCH_FILE_NAME)
+        matchElementWithNoScoreAndStartTime = FileUtils.loadDocument(MATCH_WITH_NO_INFO_FILE_NAME)
     }
 
     @Test
@@ -103,10 +102,5 @@ class ChampionatCalendarParsingServiceImplTest {
     fun `extractRound happy path`() {
         val round = parsingService.extractRound(matchElement)
         assertEquals(1, round)
-    }
-
-    private fun loadDocument(fileName: String): Document {
-        val resource = javaClass.classLoader.getResource(fileName)
-        return Jsoup.parse(File(resource!!.file), Charsets.UTF_8.name())
     }
 }

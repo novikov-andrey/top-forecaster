@@ -7,3 +7,11 @@ spring:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
+
+championat-client:
+  url: https://www.championat.com
+  rplCalendarLink: /football/_russiapl/tournament/2599/calendar
+  timeout: 60000
+
+rpl:
+  currentSeason: 2018
