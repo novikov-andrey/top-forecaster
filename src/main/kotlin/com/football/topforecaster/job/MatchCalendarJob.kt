@@ -12,7 +12,7 @@ class MatchCalendarJob(
 ) {
     companion object: KLogging()
 
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     fun uploadCalendar() {
         try {
             logger.info { "Start loading match calendar" }
