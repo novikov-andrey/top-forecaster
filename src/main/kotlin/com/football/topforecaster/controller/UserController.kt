@@ -1,6 +1,6 @@
 package com.football.topforecaster.controller
 
-import com.football.topforecaster.model.UserDTO
+import com.football.topforecaster.dto.UserDTO
 import com.football.topforecaster.service.UserService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

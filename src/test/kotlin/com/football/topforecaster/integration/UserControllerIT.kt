@@ -3,7 +3,7 @@ package com.football.topforecaster.integration
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.football.topforecaster.PostgresIT
 import com.football.topforecaster.entity.User
-import com.football.topforecaster.model.UserDTO
+import com.football.topforecaster.dto.UserDTO
 import com.football.topforecaster.repository.UserRepository
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
@@ -58,6 +58,24 @@ class UserControllerIT : PostgresIT() {
         val users = userRepository.findAll()
         assertEquals(1, users.size)
         assertEquals(userEntity, users[0])
+    }
+
+    @Test
+    fun `registerUser - not valid request`() {
+        val userDTO = UserDTO(
+                telegramId = 1,
+                chatId = 1,
+                name = ""
+        )
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/user/register")
+                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(objectMapper.writeValueAsString(userDTO))
+        )
+                .andExpect(status().isBadRequest)
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.football.topforecaster.model
+package com.football.topforecaster.dto
 
 import com.football.topforecaster.entity.User
 import javax.validation.constraints.NotBlank
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank
 data class UserDTO (
         var telegramId: Long,
         var chatId: Long,
-        @NotBlank
+        @get:NotBlank
         var name: String
 ) {
     fun toUserEntity() = User(
