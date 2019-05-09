@@ -1,5 +1,6 @@
 package com.football.topforecaster.entity
 
+import com.football.topforecaster.entity.enums.Tournament
 import java.time.LocalDate
 import java.time.LocalTime
 import javax.persistence.*
@@ -21,5 +22,7 @@ data class Match (
         @Column(name = "guest_score")
         var guestScore: Int?,
         var round: Int,
-        var season: Int
+        var season: Int,
+        @Enumerated(EnumType.STRING)
+        var tournament: Tournament
 )

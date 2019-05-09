@@ -2,17 +2,15 @@ package com.football.topforecaster.service.impl
 
 import com.football.topforecaster.client.ChampionatClient
 import com.football.topforecaster.entity.Match
-import com.football.topforecaster.properties.ChampionatClientProperties
+import com.football.topforecaster.entity.enums.Tournament
 import com.football.topforecaster.properties.RplProperties
 import com.football.topforecaster.repository.MatchCalendarRepository
 import com.football.topforecaster.service.CalendarParsingService
 import com.football.topforecaster.service.MatchCalendarService
-import com.football.topforecaster.service.NetworkService
 import mu.KLogging
 import org.jsoup.nodes.Element
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import javax.annotation.PostConstruct
 
 @Service
 class MatchCalendarServiceImpl(
@@ -51,7 +49,8 @@ class MatchCalendarServiceImpl(
                 hostScore = calendarParsingService.extractHostScore(matchRow),
                 guestScore = calendarParsingService.extractGuestScore(matchRow),
                 round = calendarParsingService.extractRound(matchRow),
-                season = rplProperties.currentSeason
+                season = rplProperties.currentSeason,
+                tournament = Tournament.RPL
         )
         matchCalendarRepository.save(match)
     }

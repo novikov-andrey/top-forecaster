@@ -1,6 +1,7 @@
 package com.football.topforecaster.util
 
 import com.football.topforecaster.entity.Match
+import com.football.topforecaster.entity.enums.Tournament
 import java.time.LocalDate
 import java.time.LocalTime
 
@@ -13,7 +14,8 @@ fun completedMatch() = Match(
         hostScore = 0,
         guestScore = 1,
         round = 1,
-        season = 2018
+        season = 2018,
+        tournament = Tournament.RPL
 )
 
 fun upcomingMatch() = Match(
@@ -25,5 +27,6 @@ fun upcomingMatch() = Match(
         hostScore = null,
         guestScore = null,
         round = 30,
-        season = 2018
+        season = 2018,
+        tournament = Tournament.RPL
 )
