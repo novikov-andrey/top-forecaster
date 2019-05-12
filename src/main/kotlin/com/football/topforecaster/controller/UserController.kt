@@ -14,7 +14,7 @@ class UserController(
         val userService: UserService
 ) {
 
-    @PostMapping("/register")
+    @PostMapping("/registration")
     fun register(@RequestBody @Valid userDTO: UserDTO) {
         userService.registerTelegramUser(userDTO.toUserEntity())
     }

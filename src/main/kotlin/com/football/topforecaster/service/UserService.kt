@@ -4,4 +4,5 @@ import com.football.topforecaster.entity.User
 
 interface UserService {
     fun registerTelegramUser(user: User)
+    fun findUserId(telegramId: Long, chatId: Long): Long
 }
