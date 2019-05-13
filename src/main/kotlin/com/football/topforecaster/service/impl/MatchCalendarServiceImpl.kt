@@ -9,6 +9,7 @@ import com.football.topforecaster.service.CalendarParsingService
 import com.football.topforecaster.service.MatchCalendarService
 import mu.KLogging
 import org.jsoup.nodes.Element
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -26,6 +27,10 @@ class MatchCalendarServiceImpl(
     override fun uploadCalendar() {
         clearCalendar()
         getCalendar()
+    }
+
+    override fun findMatchById(matchId: Long): Match {
+        return matchCalendarRepository.findByIdOrNull(matchId)!!
     }
 
     private fun getCalendar() {

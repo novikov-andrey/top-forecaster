@@ -12,6 +12,8 @@ data class UserDTO (
     fun toUserEntity() = User(
             telegramId = telegramId,
             chatId = chatId,
-            name = name
+            name = name,
+            subscriptions = emptyList(),
+            forecasts = emptyList()
     )
 }

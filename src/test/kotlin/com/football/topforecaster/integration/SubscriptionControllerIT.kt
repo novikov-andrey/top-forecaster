@@ -5,10 +5,10 @@ import com.football.topforecaster.PostgresIT
 import com.football.topforecaster.dto.SubscriptionDTO
 import com.football.topforecaster.dto.UserDTO
 import com.football.topforecaster.entity.Subscription
-import com.football.topforecaster.entity.User
 import com.football.topforecaster.entity.enums.Tournament
 import com.football.topforecaster.repository.SubscriptionRepository
 import com.football.topforecaster.repository.UserRepository
+import com.football.topforecaster.util.userEntity
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -18,9 +18,11 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.context.WebApplicationContext
 
-class SubscriptionControllerIT : PostgresIT() {
+@Transactional
+open class SubscriptionControllerIT : PostgresIT() {
 
     @Autowired
     private lateinit var context: WebApplicationContext
@@ -39,15 +41,14 @@ class SubscriptionControllerIT : PostgresIT() {
     }
 
     @Test
-    fun `addSubscription - happy path`() {
-        userRepository.save(User(
-                id = 1,
-                telegramId = 1,
-                chatId = 1,
-                name = "@test"
-        ))
+    open fun `addSubscription - happy path`() {
+        userRepository.save(userEntity())
 
-        val subscription = subscriptionEntity().apply { id = 2 }
+        val subscription = subscriptionEntity()
+                .apply {
+                    id = 2
+                    user = userEntity().apply { id = 2 }
+                }
 
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/subscription/new")
@@ -64,12 +65,7 @@ class SubscriptionControllerIT : PostgresIT() {
 
     @Test
     fun `removeSubscription - happy path`() {
-        userRepository.save(User(
-                id = 1,
-                telegramId = 1,
-                chatId = 1,
-                name = "@test"
-        ))
+        userRepository.save(userEntity())
         subscriptionRepository.save(subscriptionEntity())
 
         mockMvc.perform(
@@ -95,7 +91,7 @@ class SubscriptionControllerIT : PostgresIT() {
 
     private fun subscriptionEntity() = Subscription(
             id = 1,
-            userId = 1,
+            user = userEntity(),
             tournament = Tournament.RPL
     )
 }

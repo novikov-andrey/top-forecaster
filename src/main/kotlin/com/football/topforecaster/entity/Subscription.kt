@@ -9,8 +9,9 @@ data class Subscription(
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subscriptionid-gen")
     @SequenceGenerator(name = "subscriptionid-gen", sequenceName = "subscription_id_seq", allocationSize = 1)
     var id: Long? = null,
-    @Column(name = "user_id")
-    var userId: Long,
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    var user: User,
     @Enumerated(EnumType.STRING)
     var tournament: Tournament
 )

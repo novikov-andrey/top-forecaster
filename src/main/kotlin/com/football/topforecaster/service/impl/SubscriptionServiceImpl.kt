@@ -1,6 +1,7 @@
 package com.football.topforecaster.service.impl
 
 import com.football.topforecaster.entity.Subscription
+import com.football.topforecaster.entity.User
 import com.football.topforecaster.entity.enums.Tournament
 import com.football.topforecaster.repository.SubscriptionRepository
 import com.football.topforecaster.service.SubscriptionService
@@ -18,7 +19,7 @@ class SubscriptionServiceImpl(
     }
 
     @Transactional
-    override fun removeSubscription(userId: Long, tournament: Tournament) {
-        subscriptionRepository.removeByUserIdAndTournament(userId, tournament)
+    override fun removeSubscription(user: User, tournament: Tournament) {
+        subscriptionRepository.removeByUserIdAndTournament(user.id!!, tournament)
     }
 }

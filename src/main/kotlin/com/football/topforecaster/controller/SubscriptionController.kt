@@ -2,6 +2,7 @@ package com.football.topforecaster.controller
 
 import com.football.topforecaster.dto.SubscriptionDTO
 import com.football.topforecaster.entity.Subscription
+import com.football.topforecaster.entity.User
 import com.football.topforecaster.entity.enums.Tournament
 import com.football.topforecaster.service.SubscriptionService
 import com.football.topforecaster.service.UserService
@@ -18,7 +19,7 @@ class SubscriptionController(
     @PostMapping("/new")
     fun addSubscription(@RequestBody @Valid subscriptionDTO: SubscriptionDTO) {
         subscriptionService.addSubscription(Subscription(
-                userId = findUserId(subscriptionDTO),
+                user = findUser(subscriptionDTO),
                 tournament = Tournament.valueOf(subscriptionDTO.tournament)
         ))
     }
@@ -26,13 +27,13 @@ class SubscriptionController(
     @PostMapping("/remove")
     fun removeSubscription(@RequestBody @Valid subscriptionDTO: SubscriptionDTO) {
         subscriptionService.removeSubscription(
-                userId = findUserId(subscriptionDTO),
+                user = findUser(subscriptionDTO),
                 tournament = Tournament.valueOf(subscriptionDTO.tournament)
         )
     }
 
-    private fun findUserId(subscriptionDTO: SubscriptionDTO): Long =
-            userService.findUserId(
+    private fun findUser(subscriptionDTO: SubscriptionDTO): User =
+            userService.findUser(
                     telegramId = subscriptionDTO.userDTO.telegramId,
                     chatId = subscriptionDTO.userDTO.chatId
             )

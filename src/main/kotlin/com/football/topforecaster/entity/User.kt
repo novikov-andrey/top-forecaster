@@ -13,5 +13,9 @@ data class User (
         var telegramId: Long,
         @Column(name = "chat_id")
         var chatId: Long,
-        var name: String
+        var name: String,
+        @OneToMany(mappedBy = "user")
+        var subscriptions: List<Subscription>?,
+        @OneToMany(mappedBy = "user")
+        var forecasts: List<Forecast>?
 )

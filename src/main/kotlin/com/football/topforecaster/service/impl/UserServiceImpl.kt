@@ -14,7 +14,7 @@ class UserServiceImpl(
         userRepository.save(user)
     }
 
-    override fun findUserId(telegramId: Long, chatId: Long): Long {
-        return userRepository.findByTelegramIdAndChatId(telegramId, chatId).id!!
+    override fun findUser(telegramId: Long, chatId: Long): User {
+        return userRepository.findByTelegramIdAndChatId(telegramId, chatId)
     }
 }
