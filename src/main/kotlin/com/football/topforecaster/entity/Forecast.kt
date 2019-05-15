@@ -19,5 +19,8 @@ class Forecast(
     var hostScore: Int,
     @Column(name = "guest_score")
     var guestScore: Int,
-    var date: LocalDate = LocalDate.now()
+    var date: LocalDate = LocalDate.now(),
+    @Column(name = "edited_date")
+    var editedDate: LocalDate = LocalDate.now(),
+    var points: Int? = null
 )
