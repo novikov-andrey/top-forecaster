@@ -86,12 +86,14 @@ open class SubscriptionControllerIT : PostgresIT() {
                     chatId = 1,
                     name = "@test"
             ),
-            tournament = "RPL"
+            tournament = "RPL",
+            season = 2018
     )
 
     private fun subscriptionEntity() = Subscription(
             id = 1,
             user = userEntity(),
-            tournament = Tournament.RPL
+            tournament = Tournament.RPL,
+            season = 2018
     )
 }

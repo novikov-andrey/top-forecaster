@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface SubscriptionRepository : JpaRepository<Subscription, Long> {
 
-    fun removeByUserIdAndTournament(userId: Long, tournament: Tournament)
+    fun removeByUserIdAndTournamentAndSeason(userId: Long, tournament: Tournament, season: Int)
 }

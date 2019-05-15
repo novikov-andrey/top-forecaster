@@ -2,5 +2,6 @@ package com.football.topforecaster.dto
 
 data class SubscriptionDTO (
         var userDTO: UserDTO,
-        var tournament: String
+        var tournament: String,
+        var season: Int
 )

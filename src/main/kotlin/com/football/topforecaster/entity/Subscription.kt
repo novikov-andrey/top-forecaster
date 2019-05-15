@@ -13,5 +13,7 @@ data class Subscription(
     @JoinColumn(name = "user_id", nullable = false)
     var user: User,
     @Enumerated(EnumType.STRING)
-    var tournament: Tournament
+    var tournament: Tournament,
+    var season: Int,
+    var points: Int = 0
 )

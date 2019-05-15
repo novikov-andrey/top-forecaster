@@ -19,7 +19,7 @@ class SubscriptionServiceImpl(
     }
 
     @Transactional
-    override fun removeSubscription(user: User, tournament: Tournament) {
-        subscriptionRepository.removeByUserIdAndTournament(user.id!!, tournament)
+    override fun removeSubscription(user: User, tournament: Tournament, season: Int) {
+        subscriptionRepository.removeByUserIdAndTournamentAndSeason(user.id!!, tournament, season)
     }
 }

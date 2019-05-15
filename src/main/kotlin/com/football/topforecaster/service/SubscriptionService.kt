@@ -6,5 +6,5 @@ import com.football.topforecaster.entity.enums.Tournament
 
 interface SubscriptionService {
     fun addSubscription(subscription: Subscription)
-    fun removeSubscription(user: User, tournament: Tournament)
+    fun removeSubscription(user: User, tournament: Tournament, season: Int)
 }

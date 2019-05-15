@@ -20,7 +20,8 @@ class SubscriptionController(
     fun addSubscription(@RequestBody @Valid subscriptionDTO: SubscriptionDTO) {
         subscriptionService.addSubscription(Subscription(
                 user = findUser(subscriptionDTO),
-                tournament = Tournament.valueOf(subscriptionDTO.tournament)
+                tournament = Tournament.valueOf(subscriptionDTO.tournament),
+                season = subscriptionDTO.season
         ))
     }
 
@@ -28,7 +29,8 @@ class SubscriptionController(
     fun removeSubscription(@RequestBody @Valid subscriptionDTO: SubscriptionDTO) {
         subscriptionService.removeSubscription(
                 user = findUser(subscriptionDTO),
-                tournament = Tournament.valueOf(subscriptionDTO.tournament)
+                tournament = Tournament.valueOf(subscriptionDTO.tournament),
+                season = subscriptionDTO.season
         )
     }
 
