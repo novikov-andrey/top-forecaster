@@ -101,6 +101,6 @@ class ChampionatCalendarParsingServiceImplTest {
     @Test
     fun `extractRound happy path`() {
         val round = parsingService.extractRound(matchElement)
-        assertEquals(1, round)
+        assertEquals("1", round)
     }
 }

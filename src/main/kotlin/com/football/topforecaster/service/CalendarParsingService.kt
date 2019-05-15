@@ -13,5 +13,5 @@ interface CalendarParsingService {
     fun extractStartTime(match: Element): LocalTime?
     fun extractHostScore(match: Element): Int?
     fun extractGuestScore(match: Element): Int?
-    fun extractRound(match: Element): Int
+    fun extractRound(match: Element): String
 }

@@ -21,7 +21,7 @@ data class Match (
         var hostScore: Int?,
         @Column(name = "guest_score")
         var guestScore: Int?,
-        var round: Int,
+        var round: String,
         var season: Int,
         @Enumerated(EnumType.STRING)
         var tournament: Tournament

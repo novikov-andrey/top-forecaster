@@ -13,7 +13,7 @@ fun completedMatch() = Match(
         startTime = LocalTime.of(16,30),
         hostScore = 0,
         guestScore = 1,
-        round = 1,
+        round = "1",
         season = 2018,
         tournament = Tournament.RPL
 )
@@ -26,7 +26,7 @@ fun upcomingMatch() = Match(
         startTime = null,
         hostScore = null,
         guestScore = null,
-        round = 30,
+        round = "30",
         season = 2018,
         tournament = Tournament.RPL
 )

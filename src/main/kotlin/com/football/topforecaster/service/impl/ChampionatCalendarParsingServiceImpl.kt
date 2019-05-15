@@ -63,8 +63,8 @@ class ChampionatCalendarParsingServiceImpl: CalendarParsingService {
             extractScore(match)?.split(SCORE_SEPARATOR)?.last()?.toInt()
 
 
-    override fun extractRound(match: Element): Int =
-            match.select(".stat-results__tour-num").first().ownText().toInt()
+    override fun extractRound(match: Element): String =
+            match.select(".stat-results__tour-num").first().ownText()
 
     private fun extractDateTime(match: Element): String =
             match.select(".stat-results__date-time").first().ownText().trim()
