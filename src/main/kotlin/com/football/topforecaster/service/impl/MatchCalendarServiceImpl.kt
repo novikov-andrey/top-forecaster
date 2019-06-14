@@ -46,18 +46,20 @@ class MatchCalendarServiceImpl(
     }
 
     private fun processMatch(matchRow: Element) {
-        val match = Match(
-                host = calendarParsingService.extractHostTeam(matchRow),
-                guest = calendarParsingService.extractGuestTeam(matchRow),
-                date = calendarParsingService.extractDate(matchRow),
-                startTime = calendarParsingService.extractStartTime(matchRow),
-                hostScore = calendarParsingService.extractHostScore(matchRow),
-                guestScore = calendarParsingService.extractGuestScore(matchRow),
-                round = calendarParsingService.extractRound(matchRow),
-                season = rplProperties.currentSeason,
-                tournament = Tournament.RPL
-        )
-        matchCalendarRepository.save(match)
+        val match = with(calendarParsingService) {
+            Match(
+                    host = extractHostTeam(matchRow),
+                    guest = extractGuestTeam(matchRow),
+                    date = extractDate(matchRow),
+                    startTime = extractStartTime(matchRow),
+                    hostScore = extractHostScore(matchRow),
+                    guestScore = extractGuestScore(matchRow),
+                    round = extractRound(matchRow),
+                    season = rplProperties.currentSeason,
+                    tournament = Tournament.RPL
+                )
+            }
+            matchCalendarRepository.save(match)
     }
 
 }
